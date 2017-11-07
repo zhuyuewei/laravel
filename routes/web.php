@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('student/info', 'StudentController@info');
+Route::get('info', 'StudentController@info');
+Route::get('orm', 'StudentController@orm');
+Route::get('orm2', 'StudentController@orm2');
 Route::get('/', function () {
     return view('welcome');
 });
