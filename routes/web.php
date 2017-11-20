@@ -13,6 +13,8 @@
 Route::get('info', 'StudentController@info');
 Route::get('orm', 'StudentController@orm');
 Route::get('orm2', 'StudentController@orm2');
+Route::get('orm3', 'StudentController@orm3');
+Route::get('section', 'StudentController@section1');
 Route::get('/', function () {
     return view('welcome');
 });

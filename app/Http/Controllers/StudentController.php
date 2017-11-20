@@ -22,7 +22,7 @@ class StudentController extends Controller
         // 返回单一字段,第二个参数指定字段作为下标
         //$res = $tab->pluck('name','age');
         //查询多个字段
-        // $res = $tab ->select('id', 'name', 'age')->get();
+        //$res = $tab ->select('id', 'name', 'age')->get();
         //chunk 方法 查询数据的时候,进行分段,一次查看指定条数
         /*  $res = $tab ->chunk(3,function($students){
               var_dump($students);
@@ -34,7 +34,7 @@ class StudentController extends Controller
     }
     public function add(){
         /*$db =DB::table('student');
-       $res = $db -> where('id', 4) -> update(['age' => 77, 'name' => 'laji']);*/
+       $res = $db -> where('id', 4) -> update(['age' =>  77, 'name' => 'laji']);*/
         $tab = DB::table('student');
         $res = $tab -> insert(['name' => '小黑', 'age' => '18']);
     }
@@ -51,12 +51,25 @@ class StudentController extends Controller
         //使用模型新增数据
 
         $student = new Student();
-        $student ->age = 33;
-        $student ->name = '小强';
+       /* $student ->age = 38;
+        $student ->name = '小周';
         $student -> save();
         $res = $student ->find(9);
-        //echo date('Y:m:d H:i:s',$res->created_at);
-        echo date_default_timezone_get();
-        echo date('Y-m-d H:i:s');
+        */
+        $student->create(['name' => '小橙', 'age' => 20]);
+        $student->create(['name' => '小白', 'age' => 33]);
+        $student->create(['name' => '小红', 'age' => 19]);
+    }
+
+    public function orm3(){
+        $student = Student::find(23);
+       $num =$student->where('id', '>', '24')->update(['age'=>'66']);
+        echo $num;
+    }
+
+    public function section1(){
+        return view('student/section1',[
+            'name' =>'小白'
+        ]);
     }
 }
